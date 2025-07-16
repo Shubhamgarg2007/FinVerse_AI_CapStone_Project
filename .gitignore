@@ -1,0 +1,28 @@
+# .gitignore
+# Node.js
+/frontend/node_modules
+/frontend/build
+
+# Python
+/backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+*.env
+
+# Node modules and build output
+node_modules/
+.vite/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Test models or temp data
+test_model/
+
+# Ignore model summary documents
+model_summary.docx
+model_summary.pdf
