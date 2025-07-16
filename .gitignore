@@ -26,3 +26,5 @@ test_model/
 # Ignore model summary documents
 model_summary.docx
 model_summary.pdf
+
+*.zip
