@@ -1,13 +1,31 @@
-<h1 align="center">Welcome to FinVerse_AI_CapStone_Project 👋</h1>
+<h1 align="center">Welcome to FinVerse AI👋</h1>
 <p>
 </p>
 
-> AI Powered Fund Manager
+> An AI Powered Fund Manager
 
-## Install
+## Setup the frontend
 
 ```sh
+cd frontend
 npm install
+npm run dev
+```
+## Setup the backend
+
+```sh
+# (Optional) Create and activate a virtual environment
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the backend serve
+uvicorn main:app --reload       
 ```
 
 ## Author
@@ -20,4 +38,3 @@ npm install
 Give a ⭐️ if this project helped you!
 
 ***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
