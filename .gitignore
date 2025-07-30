@@ -11,4 +11,5 @@
 
 # Optional ignores inside frontend/backend
 frontend/node_modules/
-backend/node_modules/
+backend/venv/
+backend/.env/
