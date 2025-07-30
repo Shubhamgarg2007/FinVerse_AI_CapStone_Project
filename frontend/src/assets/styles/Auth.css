@@ -1,0 +1,143 @@
+/* src/assets/styles/Auth.css */
+.auth-form-container {
+  background-color: var(--surface-color);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.app-login-main-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.app-logo {
+  height: 60px;
+  width: auto;
+}
+
+.app-login-main-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.app-login-main-header img {
+  display: block;
+}
+.app-login-main-tagline {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.auth-form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted-color);
+  font-weight: 500;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: #2a2a2a;
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.2);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.auth-switch-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-muted-color);
+}
+
+.auth-switch-text button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.auth-switch-text button:hover {
+  text-decoration: underline;
+}
+
+/* Signup Form Specifics */
+.step-indicator {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: var(--text-muted-color);
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface-color);
+  border-color: var(--primary-color);
+}

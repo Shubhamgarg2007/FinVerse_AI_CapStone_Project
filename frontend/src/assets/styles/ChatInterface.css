@@ -1,0 +1,296 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+/* General container for the entire chat interface */
+.chat-interface-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack profile and chat vertically */
+    gap: 25px; /* Space between sections */
+    margin-top: 30px; /* Space from the H2 title */
+    background-color: #1a1a1a; /* Dark background, similar to other widgets */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+    font-family: 'Open Sans', sans-serif; /* Consistent font */
+    color: #e0e0e0; /* Light text for dark background */
+}
+
+/* User Profile Section Styling */
+.profile-input-section {
+    background-color: #2a2a2a; /* Slightly lighter dark for inner section */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for inputs */
+    gap: 18px; /* Space between input groups */
+}
+
+.profile-input-section h3 {
+    grid-column: 1 / -1; /* Make heading span all columns */
+    color: #00bcd4; /* Accent color for headings */
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.3); /* Subtle separator */
+    padding-bottom: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.95em;
+    margin-bottom: 6px;
+    color: #b0b0b0; /* Slightly muted label color */
+}
+
+.profile-input-section input[type="text"],
+.profile-input-section input[type="number"],
+.profile-input-section select {
+    width: 100%; /* Ensure inputs take full width of their grid cell */
+    padding: 12px 15px;
+    background-color: #3a3a3a; /* Darker input fields */
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: #e0e0e0; /* Light text input */
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.profile-input-section input[type="text"]:focus,
+.profile-input-section input[type="number"]:focus,
+.profile-input-section select:focus {
+    border-color: #00bcd4; /* Accent color on focus */
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3); /* Glow effect on focus */
+    outline: none;
+}
+
+/* Chat Area Styling */
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    background-color: #2a2a2a; /* Consistent background for chat area */
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.chat-log {
+    flex-grow: 1; /* Allows it to take available space */
+    max-height: 450px; /* Limit height and make it scrollable */
+    overflow-y: auto;
+    padding-right: 15px; /* Space for scrollbar */
+    margin-bottom: 20px;
+    scroll-behavior: smooth; /* Smooth scrolling */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #00bcd4 #3a3a3a; /* Firefox scrollbar */
+}
+
+/* Custom scrollbar for Webkit browsers */
+.chat-log::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-log::-webkit-scrollbar-track {
+    background: #3a3a3a;
+    border-radius: 10px;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    background-color: #00bcd4;
+    border-radius: 10px;
+    border: 2px solid #3a3a3a;
+}
+
+/* Individual Chat Messages */
+.message {
+    padding: 12px 18px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    max-width: 85%;
+    word-wrap: break-word; /* Ensure long words wrap */
+    line-height: 1.5;
+}
+
+.message p {
+    margin: 0; /* Remove default paragraph margins */
+    padding: 0;
+}
+
+.user {
+    background-color: #007bff; /* Blue for user messages */
+    color: white;
+    align-self: flex-end; /* Align user messages to the right */
+    margin-left: auto; /* Push to the right */
+    border-bottom-right-radius: 5px; /* Pointed corner */
+}
+
+.ai {
+    background-color: #444; /* Darker grey for AI messages */
+    color: #e0e0e0;
+    align-self: flex-start; /* Align AI messages to the left */
+    margin-right: auto; /* Push to the left */
+    border-bottom-left-radius: 5px; /* Pointed corner */
+}
+
+/* Chat Input Form */
+.message-input-form {
+    display: flex;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
+}
+
+.message-input-form input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.message-input-form input[type="text"]:focus {
+    border-color: #00bcd4;
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
+    outline: none;
+}
+
+.message-input-form button {
+    padding: 12px 25px;
+    background-color: #00bcd4; /* Accent color for send button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.message-input-form button:hover {
+    background-color: #0097a7; /* Darker accent on hover */
+    transform: translateY(-1px);
+}
+
+.message-input-form button:active {
+    transform: translateY(0);
+}
+
+
+/* Chat Prompts Section */
+.chat-prompts {
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 25px; /* Space between chat area and prompts */
+}
+
+.prompt-heading {
+    font-size: 1.2em;
+    color: #00bcd4;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.chat-prompts ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for prompts */
+    gap: 10px;
+}
+
+.chat-prompts li {
+    background-color: #3a3a3a;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #b0b0b0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid #444;
+    text-align: center;
+}
+
+.chat-prompts li:hover {
+    background-color: #00bcd4; /* Highlight on hover */
+    color: white;
+    border-color: #00bcd4;
+}
+
+/* Ensure images fit within their containers if you add them */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Consistent rounded corners for images */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .chat-interface-wrapper {
+        padding: 20px;
+        gap: 20px;
+    }
+    .profile-input-section, .chat-prompts ul {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+    .profile-input-section h3 {
+        font-size: 1.4em;
+    }
+    .message {
+        max-width: 95%;
+    }
+    .message-input-form {
+        flex-direction: column;
+    }
+    .message-input-form button {
+        width: 100%;
+    }
+    .message {
+    padding: 12px 18px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    max-width: 85%;
+    word-wrap: break-word;
+    line-height: 1.5;
+    /* ADD OR UPDATE THIS FONT-FAMILY LINE */
+    font-family: 'Open Sans', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.message p {
+    margin: 0;
+    padding: 0;
+    /* Ensure the emoji fonts are inherited or explicitly set here too if needed */
+    font-family: inherit; /* Ensures it inherits from .message */
+}
+
+
+/* You might also want to add this to the list items and headers if they also use emojis */
+.chat-prompts li {
+    /* ... existing styles ... */
+    font-family: 'Open Sans', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-input-section h3, .prompt-heading {
+    /* ... existing styles ... */
+    font-family: 'Open Sans', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Optional: If you want the extracted emojis to have different styling (e.g., larger) */
+.line-emoji {
+    font-size: 1.2em; /* Make them slightly larger than surrounding text */
+    vertical-align: middle; /* Align them better with text */
+    /* Ensure these use system emoji fonts primarily if needed */
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+}
