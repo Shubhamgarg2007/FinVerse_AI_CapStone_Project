@@ -2,7 +2,7 @@
 <p>
 </p>
 
-> An AI Powered Fund Manager
+> Smart Investments, powered by AI
 
 ## Setup the frontend
 
