@@ -1,16 +1,30 @@
 # Ignore everything by default
 *
 
-# Allow only these folders/files
+# Allow frontend and backend folders and their contents
 !frontend/
+!frontend/**
 !backend/
+!backend/**
+
+# Allow root-level files
 !README.md
 !.gitignore
 !package.json
 !package-lock.json
 
-# Ignore node_modules and Python virtual environment
+# Ignore frontend build artifacts and dependencies
 frontend/node_modules/
-backend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Ignore backend Python venv, caches, compiled files
 backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
 backend/.env
+
+# Optionally ignore frequently changing local/test artifacts
+backend/market_cache.json
