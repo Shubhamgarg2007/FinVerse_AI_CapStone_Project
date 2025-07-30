@@ -1,4 +1,3 @@
-# core/config.py
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
@@ -14,5 +13,4 @@ class Settings(BaseSettings):
         # This tells Pydantic to read the variables from a .env file
         env_file = ".env"
 
-# Create a single instance of the settings that can be imported elsewhere
 settings = Settings()

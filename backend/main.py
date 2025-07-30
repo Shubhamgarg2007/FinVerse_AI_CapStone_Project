@@ -28,24 +28,19 @@ def read_root():
 @app.post("/predict")
 async def predict(input: UserInput):
     try:
-        # 1. Start with the base user profile data from the frontend
-        # This will be None for fields the user hasn't set.
+
         user_data = input.dict(exclude_unset=True)
         print(f"--- [DEBUG] 1. Initial data from frontend: {user_data}")
 
-        # 2. Parse the chat message for new/overriding information
         parsed_data = {}
         if input.message:
             parsed_data = parse_natural_language(input.message)
             print(f"--- [DEBUG] 2. Data Parsed from NLP: {parsed_data}")
 
-        # 3. Combine the data: Start with the profile, then update with NLP results.
-        # This ensures the chat message can override the saved profile.
         final_data = user_data.copy()
         final_data.update(parsed_data)
         print(f"--- [DEBUG] 3. Data after merging NLP: {final_data}")
 
-        # 4. Apply defaults ONLY for fields that are still missing
         default_values = {
             "age": 30, "annual_income": 800000, "monthly_savings": 20000,
             "emergency_fund": 100000, "risk_appetite": "Medium",
@@ -55,13 +50,13 @@ async def predict(input: UserInput):
             if final_data.get(key) is None:
                 final_data[key] = value
 
-        # The 'message' field is not needed by the model, so remove it
+
         final_data.pop('message', None)
 
         print(f"--- [DEBUG] 4. FINAL DATA SENT TO MODEL: {final_data} ---")
 
-        # 5. Get the prediction using your integrated ML model
-        result = predict_allocation(final_data) # This calls your function from model.py
+   
+        result = predict_allocation(final_data) 
         return result
 
     except Exception as e:

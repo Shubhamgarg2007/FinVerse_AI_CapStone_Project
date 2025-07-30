@@ -25,7 +25,7 @@ try:
         group_by='ticker',
         auto_adjust=False,
         progress=True,
-        threads=False  # Avoid multi-threading if connection is unstable
+        threads=False  
     )
 
     for ticker in tickers:

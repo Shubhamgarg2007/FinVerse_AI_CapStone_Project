@@ -1,4 +1,4 @@
-# crud/user_crud.py
+
 from sqlalchemy.orm import Session
 from db import models
 from schemas import user_schemas

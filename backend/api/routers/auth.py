@@ -1,12 +1,12 @@
 # api/routers/auth.py
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer # Ensure OAuth2PasswordBearer is imported
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from schemas import user_schemas
 from crud import user_crud
 from core import security
 from db.database import get_db
-from jose import JWTError, jwt # Ensure jwt is imported if you're using it directly
+from jose import JWTError, jwt 
 
 router = APIRouter(
 
@@ -14,14 +14,8 @@ router = APIRouter(
 )
 
 
-# =================================================================
-# THE FIX: Define oauth2_scheme right here
-# =================================================================
-# This tells FastAPI that the token should be read from the header
-# 'Authorization: Bearer <your_token>'
-# The `tokenUrl` points to our login endpoint.
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/token")
-# =================================================================
+
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
@@ -35,7 +29,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        # Use the security module to decode, not jwt directly here
+        
         payload = jwt.decode(token, security.settings.SECRET_KEY, algorithms=[security.settings.ALGORITHM])
         email: str = payload.get("sub")
         
@@ -56,7 +50,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
         raise credentials_exception
     
     print(f"--- SUCCESS: User '{user.email}' authenticated. ---")
-    # --- END DEBUGGING PRINTS ---
+   
     return user
 
 

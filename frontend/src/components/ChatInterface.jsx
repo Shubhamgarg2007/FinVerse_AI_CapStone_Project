@@ -3,22 +3,20 @@ import axios from 'axios';
 import '../assets/styles/Dashboard.css';
 import '../assets/styles/ChatInterface.css';
 
-// A new helper component to render chat messages with line breaks
-// This makes the AI report look formatted
+
 const ChatMessage = ({ sender, message }) => {
-  // Use a regex to find emojis at the start of lines and style them
+
   const formatLine = (line) => {
     let content = line;
     let emoji = '';
 
-    // Check for common emojis at the start and extract them
+
     const emojiMatch = line.match(/^([📊📈💰⏱️👤🎯🤖💸💳🏛️🏦🏆💡⚠️📋🔄📚🔍🎢💎🔮✅❌👋⚡🟢🟡🔴🚀🧠📱📝🛡️🥇🔬⚖️])/);
     if (emojiMatch) {
       emoji = emojiMatch[1];
       content = line.substring(emoji.length).trim();
     }
 
-    // Apply specific styles for different line types if needed
     if (line.startsWith('=')) {
       return <p className="section-divider">{line}</p>;
     }
@@ -60,7 +58,7 @@ const ChatInterface = ({ user }) => {
     monthly_savings: user?.monthlySavings || '',
     risk_appetite: user?.riskAppetite || 'Medium',
     investment_goal: user?.primaryGoal || 'Wealth Creation',
-    timeline_months: '', // This might not be in user prop, keep it as it's parsed from chat
+    timeline_months: '', 
     emergency_fund: '',
     existing_investment_pct: '',
     goal_amount: ''
@@ -94,8 +92,7 @@ useEffect(() => {
         monthly_savings: user.monthlySavings || '',
         risk_appetite: user.riskAppetite || 'Medium',
         investment_goal: user.primaryGoal || 'Wealth Creation',
-        // timeline_months, emergency_fund, existing_investment_pct, goal_amount
-        // These are typically derived from chat, not directly from static user profile in DB
+
       }));
     }
   }, [user]);
@@ -127,20 +124,20 @@ useEffect(() => {
     e.preventDefault();
 
     const userMessage = inputMessage.trim();
-    // Allow sending just profile updates without a text message
+   
     if (!userMessage && Object.values(userData).every(val => val === '' || val === 'Medium' || val === 'Wealth Creation')) {
-      return; // Prevent sending empty messages and empty profiles
+      return; 
     }
 
-    // Add user message to chat log
+
     const currentChatLog = [...chatLog, { sender: 'user', message: userMessage || 'Profile Update Submitted' }];
     setChatLog(currentChatLog);
-    setInputMessage(''); // Clear the input field
+    setInputMessage('');
 
     try {
       const payload = {
         message: userMessage,
-        // Ensure numbers are sent as numbers, not empty strings
+
         age: userData.age ? parseInt(userData.age) : undefined,
         annual_income: userData.annual_income ? parseFloat(userData.annual_income) : undefined,
         monthly_savings: userData.monthly_savings ? parseFloat(userData.monthly_savings) : undefined,
@@ -160,7 +157,7 @@ useEffect(() => {
       if (response.data.full_report) {
         aiResponseContent = response.data.full_report;
       } else {
-        // Fallback for unexpected or incomplete responses
+
         aiResponseContent = `Debt: ${response.data.debt_allocation}%, Equity: ${response.data.equity_allocation}%, Mutual Funds: ${response.data.mutual_fund_allocation}%`;
       }
 
@@ -168,7 +165,7 @@ useEffect(() => {
 
     } catch (error) {
       console.error('Failed to get AI response:', error);
-      // Use the helper function to format the error message
+
       const errorMessage = formatErrorMessage(error);
       setChatLog(prevChatLog => [...prevChatLog, { sender: 'ai', message: `❌ ${errorMessage}` }]);
     }
@@ -221,7 +218,7 @@ useEffect(() => {
       </div>
 
       <div className="chat-area">
-        {/* MOVED: "Try asking" section is now here, at the top of chat-area */}
+
         <div className="chat-prompts">
           <p className="prompt-heading">Try asking:</p>
           <ul>
@@ -237,14 +234,14 @@ useEffect(() => {
           </ul>
         </div>
 
-        {/* MOVED: Chat log is now below the prompts */}
+
         <div className="chat-log" ref={chatLogRef}>
           {chatLog.map((entry, index) => (
             <ChatMessage key={index} sender={entry.sender} message={entry.message} />
           ))}
         </div>
 
-        {/* The input form remains at the bottom */}
+ 
         <form onSubmit={handleSubmit} className="message-input-form">
           <input
             type="text"
@@ -261,7 +258,7 @@ useEffect(() => {
 
 export default ChatInterface;
 
-// Helper function (should be defined somewhere accessible, e.g., in a utils file or above ChatInterface)
+// Helper function 
 const formatErrorMessage = (error) => {
     let message = 'An unknown error occurred. Please try again.';
     if (axios.isAxiosError(error) && error.response) {

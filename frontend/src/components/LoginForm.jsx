@@ -42,7 +42,7 @@ const LoginForm = ({ onShowSignup, onLoginSuccess }) => {
   };
 
   return (
-    // The main container for the entire login page.
+
     
     <div className="login-page-wrapper"> 
       <div className="app-login-main-header">

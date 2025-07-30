@@ -1,4 +1,3 @@
-# backend/nlp.py
 import re
 
 def parse_natural_language(message: str) -> dict:
@@ -6,7 +5,7 @@ def parse_natural_language(message: str) -> dict:
     Parses a natural language string to extract financial profile details.
     Returns a dictionary with found values, or None for fields it cannot find.
     """
-    message = message.lower() # Standardize to lowercase for easier matching
+    message = message.lower() 
     extracted = {}
 
     # --- Regex for Age ---

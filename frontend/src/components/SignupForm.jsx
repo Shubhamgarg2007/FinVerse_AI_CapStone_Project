@@ -3,13 +3,12 @@ import '../assets/styles/Auth.css';
 import axios from 'axios';
 
 const SignupForm = ({ onShowLogin, onSignupSuccess }) => {
-  // Removed 'step' state as there's only one step now
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     password: '',
-    confirmPassword: '', // Added confirmPassword field
-    // Removed all financial profile fields as per instruction
+    confirmPassword: '', 
   });
 
   const handleChange = (e) => {
@@ -32,9 +31,9 @@ const SignupForm = ({ onShowLogin, onSignupSuccess }) => {
       fullName: formData.fullName,
       email: formData.email,
       password: formData.password,
-      // No financial profile data sent during signup anymore
-      // These will be collected later, possibly in the chat interface or a separate profile page
-      income: 0, // Default or null if backend allows for initial signup without this data
+      
+      
+      income: 0, 
       riskAppetite: 'Medium',
       primaryGoal: 'Wealth Creation',
       retirementAge: 65,

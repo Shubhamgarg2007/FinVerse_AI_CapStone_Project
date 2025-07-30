@@ -292,10 +292,9 @@
 }
 .chart-container-wrapper {
   position: relative;
-  height: 400px; /* Adjust height as needed for your layout */
+  height: 400px; 
   width: 100%;
   margin-bottom: 2rem;
-  /* Re-applying widget styles for consistent look */
   background-color: var(--surface-color);
   padding: 1.5rem;
   border-radius: 12px;
@@ -308,7 +307,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
-  flex-wrap: wrap; /* Allows controls to wrap on smaller screens */
+  flex-wrap: wrap; 
 }
 
 .chart-controls label {
@@ -323,10 +322,9 @@
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: 0.95rem;
-  appearance: none; /* Removes default browser dropdown arrow */
-  -webkit-appearance: none; /* For Safari */
-  -moz-appearance: none; /* For Firefox */
-  /* Custom SVG arrow icon */
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none; 
   background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
   background-repeat: no-repeat;
   background-position: right 0.7rem top 50%;
