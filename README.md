@@ -28,6 +28,8 @@ pip install -r requirements.txt
 uvicorn main:app --reload       
 ```
 
+> ⚠️ Note: The database deployment will end on 1st August, 8 PM. Make sure to test or migrate your data accordingly.
+
 ## Author
 
 👤 **Shubham Garg**
